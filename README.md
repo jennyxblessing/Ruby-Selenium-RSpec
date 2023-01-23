@@ -1,4 +1,4 @@
-# Selenium-w-Ruby-
+# Ruby w/Selenium and RSpec Demo
 
 
 Hello!
