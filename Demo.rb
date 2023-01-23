@@ -15,7 +15,6 @@ describe "Logging in" do
 		
 		sleep 1
 
-
 		driver.find_element(id: 'user-name').send_keys (username)
 		driver.find_element(id: 'password').send_keys (password)
 		driver.find_element(id: 'login-button').click
