@@ -14,6 +14,17 @@ lastName = 'Blessing'
 zip = '00000'
 
 
+describe "1-00 Navigating to site" do
+	it "User is able to reach Login page of demo site successfully" do
+	
+	driver.navigate.to "https://www.saucedemo.com"
+	expect(driver.find_element(id: 'login_button_container'))
+
+	sleep 1
+
+	end
+end
+
 describe "1-01 Invalid username and password" do 
 	it "User w/invalid username and invalid password receives error" do
 
@@ -80,9 +91,9 @@ describe "1-04 Valid username and password" do
 	end
 end 
 
-#todo add to test plan
-describe "Check for banner" do
-	it "Waits until banner appears and checks that the text is correct" do
+
+describe "2-00 Navigating to Products page" do
+	it "User is able to reach Products page of demo site successfully" do
  				
 		wait.until {driver.find_element(id: 'header_container').displayed?}
 		expect(driver.find_element(id: 'header_container').text).to include("PRODUCTS")
