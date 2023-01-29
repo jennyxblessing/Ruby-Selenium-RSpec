@@ -80,7 +80,7 @@ describe "1-04 Valid username and password" do
 	end
 end 
 
-
+#todo add to test plan
 describe "Check for banner" do
 	it "Waits until banner appears and checks that the text is correct" do
  				
@@ -90,7 +90,8 @@ describe "Check for banner" do
 		sleep 1
 	end
 end
-	
+
+#todo refactor based on test plan IDs for bidirectional tracability 
 describe "Goes shopping" do 
 	it "Checking for button text and adding items to cart" do
 
@@ -120,6 +121,7 @@ describe "Goes shopping" do
 	end
 end
 
+#todo add to test plan
 describe "view cart" do
 	it "navigates into the shopping cart and back to list page" do
  				
@@ -138,6 +140,7 @@ describe "view cart" do
 	end
 end
 
+#todo add to test plan
 describe "Enter info/cancel" do
 	it "Fills out First/Last/Zip code fields and cancels" do
  				
@@ -152,7 +155,7 @@ describe "Enter info/cancel" do
 	end
 end
 
-
+#todo add to test plan
 describe "Leave info blank error check: first name" do
 	it "Attempts to CONTINUE w/o adding info, checks for errors" do
  		
@@ -168,6 +171,7 @@ describe "Leave info blank error check: first name" do
 	end
 end
 
+#todo add to test plan
 describe "Leave info blank error check: last name" do
 	it "Attempts to CONTINUE w/o adding info, checks for errors" do
  				
@@ -180,7 +184,7 @@ describe "Leave info blank error check: last name" do
 	end
 end
 
-
+#todo add to test plan
 describe "Leave info blank error check: postal code" do
 	it "Attempts to CONTINUE w/o adding info, checks for errors" do
  				
