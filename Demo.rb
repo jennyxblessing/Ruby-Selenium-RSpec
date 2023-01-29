@@ -3,22 +3,80 @@ require "rspec"
 
 driver = Selenium::WebDriver.for :chrome
 wait = Selenium::WebDriver::Wait.new(:timeout => 10)
-username = 'standard_user'
-password = 'secret_sauce'
+validUsername = 'standard_user'
+validPassword = 'secret_sauce'
+invalidUser = 'invalid_username'
+invalidPass = 'invalid_password'
 addText = 'ADD TO CART'
 removeText = 'REMOVE'
+firstName = 'Jenny'
+lastName = 'Blessing'
+zip = '00000'
 
-describe "Logging in" do 
-	it "Logs in with username and password variable" do
+
+describe "1-01 Invalid username and password" do 
+	it "User w/invalid username and invalid password receives error" do
 
 		driver.navigate.to "https://www.saucedemo.com"
-		
 		sleep 1
 
-		driver.find_element(id: 'user-name').send_keys (username)
-		driver.find_element(id: 'password').send_keys (password)
+		driver.find_element(id: 'user-name').send_keys (invalidUser)
+		driver.find_element(id: 'password').send_keys (invalidPass)
+		driver.find_element(id: 'login-button').click
+		wait.until {driver.find_element(:xpath, '/html/body/div/div/div[2]/div[1]/div[1]/div/form/div[3]/h3').displayed?}
+		expect(driver.find_element(id: 'login_button_container').text).to include("Epic sadface: Username and password do not match any user in this service")
+
+		sleep 1
+
+	end
+end 
+
+
+describe "1-02 Valid username/invalid password" do 
+	it "User w/valid username and invalid password receives error" do
+
+		driver.navigate.to "https://www.saucedemo.com"
+		sleep 1
+
+		driver.find_element(id: 'user-name').send_keys (validUsername)
+		driver.find_element(id: 'password').send_keys (invalidPass)
+		driver.find_element(id: 'login-button').click
+		wait.until {driver.find_element(:xpath, '/html/body/div/div/div[2]/div[1]/div[1]/div/form/div[3]/h3').displayed?}
+		expect(driver.find_element(id: 'login_button_container').text).to include("Epic sadface: Username and password do not match any user in this service")
+		
+		sleep 1
+	end
+end 
+
+
+describe "1-03 Invalid username and valid password" do 
+	it "User w/invalid username and valid password receives error" do
+
+		driver.navigate.to "https://www.saucedemo.com"
+		sleep 1
+
+		driver.find_element(id: 'user-name').send_keys (invalidUser)
+		driver.find_element(id: 'password').send_keys (validPassword)
+		driver.find_element(id: 'login-button').click
+		wait.until {driver.find_element(:xpath, '/html/body/div/div/div[2]/div[1]/div[1]/div/form/div[3]/h3').displayed?}
+		expect(driver.find_element(id: 'login_button_container').text).to include("Epic sadface: Username and password do not match any user in this service")
+		
+		sleep 1
+	end
+end
+
+
+describe "1-04 Valid username and password" do 
+	it "User w/valid username and valid password is able to log in successfully" do
+		
+		driver.navigate.to "https://www.saucedemo.com"
+		sleep 1
+
+		driver.find_element(id: 'user-name').send_keys (validUsername)
+		driver.find_element(id: 'password').send_keys (validPassword)
 		driver.find_element(id: 'login-button').click
 		
+		sleep 1
 	end
 end 
 
